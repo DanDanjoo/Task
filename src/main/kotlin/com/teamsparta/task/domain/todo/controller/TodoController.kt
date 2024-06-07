@@ -18,7 +18,7 @@ class TodoController {
     }
 
     @GetMapping("/{todoId}")
-    fun getTodo(@PathVariable todoId: Long): ResponseEntity<TodoResponse> {
+    fun getTodoById(@PathVariable todoId: Long): ResponseEntity<TodoResponse> {
         //TODO
     }
 

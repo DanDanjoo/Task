@@ -1,8 +1,8 @@
-package com.teamsparta.task.domain.todo.service
+package com.teamsparta.task.domain.task.service
 
-import com.teamsparta.task.domain.todo.dto.CreateTaskRequest
-import com.teamsparta.task.domain.todo.dto.TaskResponse
-import com.teamsparta.task.domain.todo.dto.UpdateTaskRequest
+import com.teamsparta.task.domain.task.dto.CreateTaskRequest
+import com.teamsparta.task.domain.task.dto.TaskResponse
+import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
 
 
 interface TaskService {

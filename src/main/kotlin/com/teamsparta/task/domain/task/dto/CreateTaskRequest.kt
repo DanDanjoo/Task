@@ -1,4 +1,4 @@
-package com.teamsparta.task.domain.todo.dto
+package com.teamsparta.task.domain.task.dto
 
 data class CreateTaskRequest (
     val title: String,

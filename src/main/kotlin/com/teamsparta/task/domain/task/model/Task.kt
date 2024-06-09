@@ -1,6 +1,6 @@
-package com.teamsparta.task.domain.todo.model
+package com.teamsparta.task.domain.task.model
 
-import com.teamsparta.task.domain.todo.dto.TaskResponse
+import com.teamsparta.task.domain.task.dto.TaskResponse
 import jakarta.persistence.Column
 import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
@@ -38,8 +38,7 @@ class Task(
             id = id!!,
             title = title,
             description = description,
-            createdAt = createdAt,
-            updatedAt = updatedAt,
+
         )
     }
 

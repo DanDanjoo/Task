@@ -1,12 +1,12 @@
-package com.teamsparta.task.domain.todo.service
+package com.teamsparta.task.domain.task.service
 
 import com.teamsparta.task.domain.exception.ModelNotFoundException
-import com.teamsparta.task.domain.todo.dto.CreateTaskRequest
-import com.teamsparta.task.domain.todo.dto.TaskResponse
-import com.teamsparta.task.domain.todo.dto.UpdateTaskRequest
-import com.teamsparta.task.domain.todo.model.Task
-import com.teamsparta.task.domain.todo.model.toResponse
-import com.teamsparta.task.domain.todo.repository.TaskRepository
+import com.teamsparta.task.domain.task.dto.CreateTaskRequest
+import com.teamsparta.task.domain.task.dto.TaskResponse
+import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
+import com.teamsparta.task.domain.task.model.Task
+import com.teamsparta.task.domain.task.model.toResponse
+import com.teamsparta.task.domain.task.repository.TaskRepository
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional

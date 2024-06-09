@@ -10,6 +10,9 @@ import java.time.LocalDateTime
 @Table(name = "task")
 class Task(
 
+    @Column(name = "username")
+    var username: String,
+
     @Column(name = "title")
     var title: String,
 
@@ -26,19 +29,28 @@ class Task(
     var comment : MutableList<Comment> = mutableListOf(),
 
 
+
     ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
+
+    @Column
+    private var completed: Boolean = false
+
+    fun complete(){
+        completed = true
+
+    }
 
 }
 
     fun Task.toResponse(): TaskResponse {
         return TaskResponse(
             id = id!!,
+            username = username,
             title = title,
             description = description,
-
 
         )
     }

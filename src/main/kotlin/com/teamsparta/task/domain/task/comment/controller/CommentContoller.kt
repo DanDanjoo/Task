@@ -3,6 +3,7 @@ package com.teamsparta.task.domain.task.comment.controller
 import com.teamsparta.task.domain.task.comment.dto.AddCommentRequest
 import com.teamsparta.task.domain.task.comment.dto.CommentResponse
 import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
+import com.teamsparta.task.domain.task.dto.RemoveCommentRequest
 import com.teamsparta.task.domain.task.service.TaskService
 import io.swagger.v3.oas.annotations.Operation
 import org.springframework.http.HttpStatus
@@ -19,7 +20,7 @@ class CommentController(
 
     @GetMapping
     @Operation(summary = "Comment 모두 조회하기", description = "모든 Comment 를 조회합니다.")
-    fun getCommentList(@PathVariable taskId: Long, ) : ResponseEntity<List<CommentResponse>> {
+    fun getCommentList(@PathVariable taskId: Long ) : ResponseEntity<List<CommentResponse>> {
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(taskService.getCommentList(taskId))
@@ -53,8 +54,10 @@ class CommentController(
     @Operation(summary = "Comment Id로 삭제하기", description = "댓글을 삭제합니다..")
     fun removeComment(
         @PathVariable taskId: Long,
-        @PathVariable commentId: Long): ResponseEntity<Unit> {
-        taskService.removeComment(taskId, commentId)
+        @PathVariable commentId: Long,
+        @RequestBody request: RemoveCommentRequest
+    ): ResponseEntity<Unit> {
+        taskService.removeComment(taskId, commentId, request)
         return ResponseEntity
             .status(HttpStatus.NO_CONTENT)
             .build()

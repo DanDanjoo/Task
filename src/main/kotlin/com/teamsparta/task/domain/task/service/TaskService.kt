@@ -28,6 +28,5 @@ interface TaskService {
 
     fun removeComment(taskId: Long, commentId: Long)
 
-
 }
 

@@ -4,6 +4,9 @@ import com.teamsparta.task.domain.exception.ModelNotFoundException
 import com.teamsparta.task.domain.task.comment.dto.AddCommentRequest
 import com.teamsparta.task.domain.task.comment.dto.CommentResponse
 import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
+import com.teamsparta.task.domain.task.comment.model.Comment
+import com.teamsparta.task.domain.task.comment.model.toResponse
+import com.teamsparta.task.domain.task.comment.repository.CommentRepository
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
@@ -17,6 +20,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class TaskServiceImpl(
     private val taskRepository: TaskRepository,
+    private val commentRepository: CommentRepository,
 ): TaskService {
 
     override fun getTasksList(): List<TaskResponse> {
@@ -59,18 +63,34 @@ class TaskServiceImpl(
     }
 
     override fun getCommentList(taskId: Long): List<CommentResponse> {
-        TODO("Not yet implemented")
-    }
+        taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
 
+        return commentRepository.findAllbyTaskId(taskId).sortedBy { it.createdAt }.map {it.toResponse()}
+    }
+    @Transactional
     override fun addComment(taskId: Long, request: AddCommentRequest): CommentResponse {
-        TODO("Not yet implemented")
+        val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
+
+        val comment = Comment(
+            content = request.content,
+            task = task
+        )
+        return commentRepository.save(comment).toResponse()
     }
 
+    @Transactional
     override fun updateComment(taskId: Long, commentId: Long, request: UpdateCommentRequest): CommentResponse {
-        TODO("Not yet implemented")
+        val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
+        val comment = commentRepository.findByTaskIdAndId(taskId, commentId) ?: throw ModelNotFoundException("Comment", commentId)
+
+        return commentRepository.save(comment).toResponse()
     }
 
+    @Transactional
     override fun removeComment(taskId: Long, commentId: Long) {
-        TODO("Not yet implemented")
+        val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
+        val comment = commentRepository.findByTaskIdAndId(taskId, commentId) ?: throw ModelNotFoundException("Comment", commentId)
+
+        commentRepository.delete(comment)
     }
 }

@@ -1,15 +1,13 @@
 package com.teamsparta.task.domain.task.model
 
+import com.teamsparta.task.domain.task.comment.model.Comment
 import com.teamsparta.task.domain.task.dto.TaskResponse
-import jakarta.persistence.Column
-import jakarta.persistence.Entity
-import jakarta.persistence.GeneratedValue
-import jakarta.persistence.GenerationType
-import jakarta.persistence.Id
+import jakarta.persistence.*
 import java.time.LocalDateTime
 
 
-@Entity(name = "task")
+@Entity
+@Table(name = "task")
 class Task(
 
     @Column(name = "title")
@@ -24,9 +22,10 @@ class Task(
     @Column(name = "updated_at")
     var updatedAt: LocalDateTime = LocalDateTime.now(),
 
+    @OneToMany(mappedBy = "task", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var comment : MutableList<Comment> = mutableListOf(),
 
-
-) {
+    ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long? = null
@@ -38,6 +37,7 @@ class Task(
             id = id!!,
             title = title,
             description = description,
+
 
         )
     }

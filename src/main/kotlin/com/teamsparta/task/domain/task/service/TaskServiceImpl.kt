@@ -1,6 +1,9 @@
 package com.teamsparta.task.domain.task.service
 
 import com.teamsparta.task.domain.exception.ModelNotFoundException
+import com.teamsparta.task.domain.task.comment.dto.AddCommentRequest
+import com.teamsparta.task.domain.task.comment.dto.CommentResponse
+import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
@@ -53,5 +56,21 @@ class TaskServiceImpl(
     override fun deleteTask(taskId: Long) {
         val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
         taskRepository.delete(task)
+    }
+
+    override fun getCommentList(taskId: Long): List<CommentResponse> {
+        TODO("Not yet implemented")
+    }
+
+    override fun addComment(taskId: Long, request: AddCommentRequest): CommentResponse {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateComment(taskId: Long, commentId: Long, request: UpdateCommentRequest): CommentResponse {
+        TODO("Not yet implemented")
+    }
+
+    override fun removeComment(taskId: Long, commentId: Long) {
+        TODO("Not yet implemented")
     }
 }

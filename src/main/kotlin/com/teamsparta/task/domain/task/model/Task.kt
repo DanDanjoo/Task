@@ -25,6 +25,7 @@ class Task(
     @OneToMany(mappedBy = "task", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var comment : MutableList<Comment> = mutableListOf(),
 
+
     ) {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

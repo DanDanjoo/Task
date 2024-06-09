@@ -65,7 +65,7 @@ class TaskServiceImpl(
     override fun getCommentList(taskId: Long): List<CommentResponse> {
         taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
 
-        return commentRepository.findAllbyTaskId(taskId).sortedBy { it.createdAt }.map {it.toResponse()}
+        return commentRepository.findAllByTaskId(taskId).sortedBy { it.createdAt }.map {it.toResponse()}
     }
     @Transactional
     override fun addComment(taskId: Long, request: AddCommentRequest): CommentResponse {

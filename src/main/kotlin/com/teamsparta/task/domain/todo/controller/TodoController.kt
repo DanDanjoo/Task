@@ -1,42 +1,44 @@
 package com.teamsparta.task.domain.todo.controller
 
 
-import com.teamsparta.task.domain.todo.dto.CreateTodoResponse
-import com.teamsparta.task.domain.todo.dto.TodoResponse
-import com.teamsparta.task.domain.todo.dto.UpdateTodoRequest
+import com.teamsparta.task.domain.todo.dto.CreateTaskRequest
+import com.teamsparta.task.domain.todo.dto.TaskResponse
+import com.teamsparta.task.domain.todo.dto.UpdateTaskRequest
+import com.teamsparta.task.domain.todo.service.TaskServiceImpl
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
+
 @RequestMapping("/todos")
 @RestController
-class TodoController {
+class TaskController(private val taskServiceImpl: TaskServiceImpl) {
 
 
     @GetMapping
-    fun getTodosList(): ResponseEntity<List<TodoResponse>> {
+    fun getTasksList(): ResponseEntity<List<TaskResponse>> {
         //TODO
     }
 
     @GetMapping("/{todoId}")
-    fun getTodoById(@PathVariable todoId: Long): ResponseEntity<TodoResponse> {
+    fun getTaskById(@PathVariable todoId: Long): ResponseEntity<TaskResponse> {
         //TODO
     }
 
     @PostMapping
-    fun createTodo(@RequestBody createTodoResponse: CreateTodoResponse): ResponseEntity<TodoResponse>{
+    fun createTask(@RequestBody createTodoRequest: CreateTaskRequest): ResponseEntity<TaskResponse>{
 
     }
 
     @PutMapping("/{todoId}")
-    fun updateTodo(
+    fun updateTask(
         @PathVariable todoId: Long,
-        @RequestBody updateTodoRequest: UpdateTodoRequest
-    ): ResponseEntity<TodoResponse> {
+        @RequestBody updateTodoRequest: UpdateTaskRequest
+    ): ResponseEntity<TaskResponse> {
         //TODO
     }
 
     @DeleteMapping("/{todoId}")
-    fun deleteTodo(@PathVariable todoId: Long): ResponseEntity<Unit> {
+    fun deleteTask(@PathVariable todoId: Long): ResponseEntity<Unit> {
         //TODO
     }
 

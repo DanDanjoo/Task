@@ -1,5 +1,5 @@
 package com.teamsparta.task.domain.task.comment.dto
 
-class UpdateCommentRequest {
-
-}
+data class UpdateCommentRequest (
+    val content: String?
+)

@@ -8,7 +8,7 @@ import com.teamsparta.task.domain.task.comment.model.Comment
 import com.teamsparta.task.domain.task.comment.model.toResponse
 import com.teamsparta.task.domain.task.comment.repository.CommentRepository
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
-import com.teamsparta.task.domain.task.dto.RemoveCommentRequest
+import com.teamsparta.task.domain.task.comment.dto.RemoveCommentRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
 import com.teamsparta.task.domain.task.model.Task

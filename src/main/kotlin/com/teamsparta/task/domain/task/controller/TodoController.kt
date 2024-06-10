@@ -48,7 +48,7 @@ class TaskController(
     }
 
     @PatchMapping("/{taskId}/complete")
-    @Operation(summary = "Task 완료 처리하기", description = "Id로 Task 완료를 체크합니다.")
+    @Operation(summary = "Task 완료 처리하기", description = "Id로 할 일 완료를 체크합니다.")
     fun completeTask(@PathVariable taskId: Long): ResponseEntity<Unit> {
 
         taskService.completeTask(taskId)

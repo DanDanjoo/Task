@@ -1,4 +1,4 @@
-package com.teamsparta.task.domain.task.dto
+package com.teamsparta.task.domain.task.comment.dto
 
 data class RemoveCommentRequest (
     val username: String,

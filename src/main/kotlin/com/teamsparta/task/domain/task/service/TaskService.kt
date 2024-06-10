@@ -4,7 +4,7 @@ import com.teamsparta.task.domain.task.comment.dto.AddCommentRequest
 import com.teamsparta.task.domain.task.comment.dto.CommentResponse
 import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
-import com.teamsparta.task.domain.task.dto.RemoveCommentRequest
+import com.teamsparta.task.domain.task.comment.dto.RemoveCommentRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
 

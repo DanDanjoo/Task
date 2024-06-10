@@ -21,7 +21,7 @@ class Comment (
     var content: String?,
 
     @Column(name = "created_at")
-    var createdAt : LocalDateTime = LocalDateTime.now(),
+    val createdAt : LocalDateTime = LocalDateTime.now(),
 
     @Column(name = "updated_at")
     var updatedAt : LocalDateTime = LocalDateTime.now(),
@@ -58,6 +58,7 @@ class Comment (
 
 fun Comment.toResponse(): CommentResponse{
     return CommentResponse(
+        id = id!!,
         username = username,
         content = content,
 

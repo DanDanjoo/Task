@@ -31,7 +31,7 @@ class TaskController(
     }
 
     @GetMapping("/{taskId}")
-    @Operation(summary = "Task Id로 조회하기", description = "Id로 할 일을 조회합니다.")
+    @Operation(summary = "Task Id로 조회하기", description = "할 일을 조회합니다.")
     fun getTaskById(@PathVariable taskId: Long): ResponseEntity<TaskResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)
@@ -48,7 +48,7 @@ class TaskController(
     }
 
     @PatchMapping("/{taskId}/complete")
-    @Operation(summary = "Task 완료 처리하기", description = "Id로 할 일 완료를 체크합니다.")
+    @Operation(summary = "Task 완료 처리하기", description = "할 일 완료를 체크합니다.")
     fun completeTask(@PathVariable taskId: Long): ResponseEntity<Unit> {
 
         taskService.completeTask(taskId)

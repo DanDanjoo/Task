@@ -6,6 +6,7 @@ import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
 import com.teamsparta.task.domain.task.comment.dto.RemoveCommentRequest
 import com.teamsparta.task.domain.task.service.TaskService
 import io.swagger.v3.oas.annotations.Operation
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -31,7 +32,8 @@ class CommentController(
     @Operation(summary = "Comment 작성하기", description = "댓글을 작성합니다.")
     fun addComment(
         @PathVariable taskId: Long,
-        @RequestBody request: AddCommentRequest): ResponseEntity<CommentResponse> {
+        @RequestBody @Valid request: AddCommentRequest,
+    ): ResponseEntity<CommentResponse> {
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(taskService.addComment(taskId, request))
@@ -42,7 +44,7 @@ class CommentController(
     fun updateComment(
         @PathVariable taskId: Long,
         @PathVariable commentId: Long,
-        @RequestBody request: UpdateCommentRequest
+        @RequestBody @Valid request: UpdateCommentRequest
     ): ResponseEntity<CommentResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)

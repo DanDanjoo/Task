@@ -9,11 +9,14 @@ import com.teamsparta.task.domain.task.comment.model.toResponse
 import com.teamsparta.task.domain.task.comment.repository.CommentRepository
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
 import com.teamsparta.task.domain.task.comment.dto.RemoveCommentRequest
+import com.teamsparta.task.domain.task.dto.CommentWithTaskRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
 import com.teamsparta.task.domain.task.model.Task
 import com.teamsparta.task.domain.task.model.toResponse
 import com.teamsparta.task.domain.task.repository.TaskRepository
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
@@ -121,5 +124,11 @@ class TaskServiceImpl(
         comment.checkAuthentication(request.username, request.password)
 
         commentRepository.deleteById(commentId)
+    }
+
+    override fun findAllWithComment(pageable: Pageable): Page<CommentWithTaskRequest>? {
+        val findAll = taskRepository.findAllFetchJPQL(pageable)
+        //        val findAll = taskRepository.findAll(pageable)
+        return findAll.map {CommentWithTaskRequest.from(it)}
     }
 }

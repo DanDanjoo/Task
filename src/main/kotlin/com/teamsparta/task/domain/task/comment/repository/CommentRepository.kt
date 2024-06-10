@@ -7,4 +7,6 @@ interface CommentRepository: JpaRepository<Comment, Long> {
 
     fun findAllByTaskId(taskId: Long): List<Comment>
     fun findByTaskIdAndId(taskId: Long, id: Long): Comment?
+
+
 }

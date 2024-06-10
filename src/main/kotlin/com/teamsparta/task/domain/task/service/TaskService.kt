@@ -5,8 +5,11 @@ import com.teamsparta.task.domain.task.comment.dto.CommentResponse
 import com.teamsparta.task.domain.task.comment.dto.UpdateCommentRequest
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
 import com.teamsparta.task.domain.task.comment.dto.RemoveCommentRequest
+import com.teamsparta.task.domain.task.dto.CommentWithTaskRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 
 
 interface TaskService {
@@ -30,6 +33,8 @@ interface TaskService {
     fun updateComment(taskId: Long, commentId: Long, request : UpdateCommentRequest): CommentResponse
 
     fun removeComment(taskId: Long, commentId: Long, request: RemoveCommentRequest)
+
+    fun findAllWithComment(pageable: Pageable): Page<CommentWithTaskRequest>?
 
 }
 

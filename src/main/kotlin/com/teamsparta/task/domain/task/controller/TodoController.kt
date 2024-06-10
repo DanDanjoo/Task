@@ -1,12 +1,15 @@
 package com.teamsparta.task.domain.task.controller
 
 
+import com.teamsparta.task.domain.task.dto.CommentWithTaskRequest
 import com.teamsparta.task.domain.task.dto.CreateTaskRequest
 import com.teamsparta.task.domain.task.dto.TaskResponse
 import com.teamsparta.task.domain.task.dto.UpdateTaskRequest
 import com.teamsparta.task.domain.task.service.TaskService
 import io.swagger.v3.oas.annotations.Operation
 import jakarta.validation.Valid
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
@@ -28,6 +31,14 @@ class TaskController(
         return ResponseEntity
             .status(HttpStatus.OK)
             .body(taskService.getTasksList(sort, userName))
+    }
+
+    @GetMapping("/with-comment")
+    @Operation(summary = "Task 모두 조회하기", description = "할 일 목록을 조회합니다.")
+    fun getTasksWithCommentList(pageable: Pageable): ResponseEntity<Page<CommentWithTaskRequest>> {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(taskService.findAllWithComment(pageable))
     }
 
     @GetMapping("/{taskId}")

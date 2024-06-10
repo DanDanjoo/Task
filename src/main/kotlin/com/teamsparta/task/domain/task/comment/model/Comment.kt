@@ -59,9 +59,7 @@ class Comment (
 fun Comment.toResponse(): CommentResponse{
     return CommentResponse(
         username = username,
-        password = password,
         content = content,
-
 
     )
 }

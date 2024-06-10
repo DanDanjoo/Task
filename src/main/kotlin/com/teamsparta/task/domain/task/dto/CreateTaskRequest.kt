@@ -9,4 +9,5 @@ data class CreateTaskRequest (
     val title: String,
     @field: Size(min = 1, max = 100, message = "내용은 1부터 100자까지 입니다.")
     val description: String?,
+    val token : String
 )

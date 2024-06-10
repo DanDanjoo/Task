@@ -92,8 +92,9 @@ class TaskServiceImpl(
     @Transactional
     override fun addComment(taskId: Long, request: AddCommentRequest): CommentResponse {
         val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
-
-
+        //TODO ("토큰 해독기를 돌린다")
+        //TODO ("로그인한 사람의 아이디로 USER객체를 조회한다")
+        //TODO ("comment에 user를 입력한다")
         val comment = Comment(
             username = request.username,
             password = request.password,
@@ -109,6 +110,10 @@ class TaskServiceImpl(
     override fun updateComment(taskId: Long, commentId: Long, request: UpdateCommentRequest): CommentResponse {
         val task = taskRepository.findByIdOrNull(taskId) ?: throw ModelNotFoundException("Task", taskId)
         val comment = commentRepository.findByTaskIdAndId(taskId, commentId) ?: throw ModelNotFoundException("Comment", commentId)
+
+        //TODO ("토큰 해독기를 돌린다")
+        //TODO ("로그인한 사람의 아이디로 USER객체를 조회한다")
+        //TODO ("comment에 있는 userId와 토큰으로 조회한 userId를 비교한다")
 
         comment.checkAuthentication(request.username, request.password)
         comment.changeContent(request.content)

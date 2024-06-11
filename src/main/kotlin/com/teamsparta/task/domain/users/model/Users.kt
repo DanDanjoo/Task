@@ -9,10 +9,11 @@ import jakarta.persistence.Id
 
 @Entity
 class Users(
-    @Column
+
+    @Column(name = "username")
     var userName: String,
 
-    @Column
+    @Column(name = "password")
     var password: String,
 
 )

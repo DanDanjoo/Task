@@ -1,4 +1,7 @@
 package com.teamsparta.task.domain.users.repository
 
-class UserRepository {
+import com.teamsparta.task.domain.users.model.Users
+import org.springframework.data.jpa.repository.JpaRepository
+
+interface UserRepository : JpaRepository<Users, Long> {
 }

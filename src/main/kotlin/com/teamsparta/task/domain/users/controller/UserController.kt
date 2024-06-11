@@ -1,6 +1,7 @@
 package com.teamsparta.task.domain.users.controller
 
 import com.teamsparta.task.domain.users.dto.CreateUserRequest
+import com.teamsparta.task.domain.users.dto.SignInRequest
 import com.teamsparta.task.domain.users.dto.UserResponse
 import com.teamsparta.task.domain.users.service.UserService
 import org.springframework.http.HttpStatus
@@ -24,5 +25,14 @@ class UserController (
        return ResponseEntity
            .status(HttpStatus.CREATED)
            .body(userService.createUser(request))
+    }
+
+
+    @PostMapping("/sign-in")
+    fun signIn(@RequestBody request: SignInRequest) : ResponseEntity<UserResponse> {
+        return ResponseEntity
+            .status(HttpStatus.OK)
+            .body(userService.signIn(request))
+
     }
 }

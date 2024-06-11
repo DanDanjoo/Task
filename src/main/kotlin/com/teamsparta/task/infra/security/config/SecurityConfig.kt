@@ -22,7 +22,7 @@ class SecurityConfig {
                     .requestMatchers("/swagger-ui/**").permitAll()
                     .requestMatchers("/v3/api-docs/**").permitAll()
                     .requestMatchers(HttpMethod.POST, "/api/v1/users/sign-up").permitAll()
-                    .requestMatchers(HttpMethod.POST, "/api/v1/users/login").permitAll()
+                    .requestMatchers(HttpMethod.POST, "/api/v1/users/sign-in").permitAll()
                     .anyRequest().authenticated()
             }
             .build()

@@ -28,7 +28,7 @@ class UserController (
     }
 
 
-    @PostMapping("/sign-in")
+    @PostMapping("/login")
     fun signIn(@RequestBody request: SignInRequest) : ResponseEntity<UserResponse> {
         return ResponseEntity
             .status(HttpStatus.OK)

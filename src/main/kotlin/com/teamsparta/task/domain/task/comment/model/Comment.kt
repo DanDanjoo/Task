@@ -2,6 +2,7 @@ package com.teamsparta.task.domain.task.comment.model
 
 import com.teamsparta.task.domain.task.comment.dto.CommentResponse
 import com.teamsparta.task.domain.task.model.Task
+import com.teamsparta.task.domain.users.model.Users
 
 import jakarta.persistence.*
 import java.time.LocalDateTime
@@ -29,6 +30,9 @@ class Comment (
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "task_id")
     var task: Task,
+
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    val author : Users
 
 
 

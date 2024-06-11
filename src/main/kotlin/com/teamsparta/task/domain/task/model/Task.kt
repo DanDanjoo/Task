@@ -2,6 +2,7 @@ package com.teamsparta.task.domain.task.model
 
 import com.teamsparta.task.domain.task.comment.model.Comment
 import com.teamsparta.task.domain.task.dto.TaskResponse
+import com.teamsparta.task.domain.users.model.Users
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -27,7 +28,9 @@ class Task(
 
     @OneToMany(mappedBy = "task", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var comment : MutableList<Comment> = mutableListOf(),
-
+//
+//    @ManyToOne
+//    val author: Users
 
 
     ) {
